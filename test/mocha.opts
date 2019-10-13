@@ -1,0 +1,6 @@
+--timeout 15s
+--exit
+--colors
+--require ts-node/register
+--recursive
+./test/*.spec.ts
