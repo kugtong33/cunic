@@ -12,7 +12,7 @@ export default class {
     const queue = await this.channel.assertQueue('', { exclusive: true });
     const correlationId = uuid.v4();
 
-    return new Promise(resolve => {
+    return new Promise<T>(resolve => {
       this.channel.consume(
         queue.queue,
         response => {

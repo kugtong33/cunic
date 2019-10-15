@@ -1,27 +1,22 @@
 import assert from 'assert';
 import sinon, { SinonSpy } from 'sinon';
-import amqplib, { Channel, Connection } from 'amqplib';
 import R from 'ramda';
 import { delay } from 'highoutput-utilities';
-import PubSub from '../src/PubSub';
+import Cunic from '../src';
 
 describe('Publisher', async () => {
-  let connection: Connection;
-  let channel: Channel;
-  let pubsub: PubSub;
+  const cunic = new Cunic();
 
   before(async () => {
-    connection = await amqplib.connect('amqp://localhost');
-    channel = await connection.createChannel();
-    pubsub = new PubSub(channel);
+    await cunic.connect();
   });
 
   after(async () => {
-    await channel.close();
-    await connection.close();
+    await cunic.disconnect();
   });
 
   it('should be able to publish messages', async () => {
+    const pubsub = cunic.createPubSub();
     const callback = sinon.fake();
     const message = {
       username: 'email@local.host',
@@ -39,6 +34,7 @@ describe('Publisher', async () => {
   });
 
   it('should be able to publish multiple messages', async () => {
+    const pubsub = cunic.createPubSub();
     const callback = sinon.fake();
     const message = {
       username: 'email@local.host',
@@ -58,6 +54,7 @@ describe('Publisher', async () => {
   });
 
   it('should be able to publish multiple messages on all subscribers', async () => {
+    const pubsub = cunic.createPubSub();
     const callbacks: SinonSpy<any[], any>[] = [];
     const message = {
       username: 'email@local.host',

@@ -1,27 +1,22 @@
 import assert from 'assert';
 import * as R from 'ramda';
 import sinon from 'sinon';
-import amqplib, { Channel, Connection } from 'amqplib';
 import { delay } from 'highoutput-utilities';
-import RPC from '../src/RPC';
+import Cunic from '../src';
 
 describe('RPC', async () => {
-  let connection: Connection;
-  let channel: Channel;
-  let rpc: RPC;
+  const cunic = new Cunic();
 
   before(async () => {
-    connection = await amqplib.connect('amqp://localhost');
-    channel = await connection.createChannel();
-    rpc = new RPC(channel);
+    await cunic.connect();
   });
 
   after(async () => {
-    await channel.close();
-    await connection.close();
+    await cunic.disconnect();
   });
 
   it('should be able to call a remote procedure', async () => {
+    const rpc = cunic.createRPC();
     const message = { username: 'email@local.host' };
     const returnMessage = { deleted: true };
     const callback = sinon.fake.returns(returnMessage);
@@ -37,6 +32,7 @@ describe('RPC', async () => {
   });
 
   it('should be able to call remote procedure multiple times', async () => {
+    const rpc = cunic.createRPC();
     const message = { username: 'email@local.host' };
     const callback = sinon.fake.returns({ deleted: true });
 
