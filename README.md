@@ -7,7 +7,7 @@ npm install cunic
 ```
 
 ## Getting Started
-----
+
 ```typescript
 import Cunic from 'cunic';
 
@@ -28,7 +28,6 @@ cunic.connect().then(async () => {
 The API is simple, this is an ongoing experiment, and usage is simple as well.
 
 ## API
-----
 
 #### Cunic()
 

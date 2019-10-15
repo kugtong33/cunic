@@ -40,5 +40,12 @@
     "highoutput-utilities": "0.0.10",
     "ramda": "^0.26.1",
     "uuid": "^3.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kugtong33/cunic.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kugtong33/cunic/issues"
   }
 }
