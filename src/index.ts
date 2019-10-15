@@ -1,14 +1,13 @@
-import amqplib, { Connection, Channel } from "amqplib";
-import PubSub from "./pubsub";
-import RPC from "./rpc";
-
+import amqplib, { Connection, Channel } from 'amqplib';
+import PubSub from './pubsub';
+import RPC from './rpc';
 
 export default class {
   private hostname: string;
   private connection?: Connection;
   private channel?: Channel;
 
-  constructor (hostname?: string) {
+  constructor(hostname?: string) {
     this.hostname = hostname || 'amqp://localhost';
     this.connection = undefined;
     this.channel = undefined;

@@ -1,11 +1,13 @@
 {
   "name": "cunic",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "rabbitmq api wrapper",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "test": "mocha",
-    "typecheck": "tsc --project tsconfig.json --noEmit"
+    "lint": "eslint . --ext .ts",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "build": "tsc --project tsconfig.json"
   },
   "keywords": [
     "rabbitmq",
@@ -17,7 +19,9 @@
   "devDependencies": {
     "@types/amqplib": "^0.5.13",
     "@types/mocha": "^5.2.7",
+    "@types/ramda": "^0.26.29",
     "@types/sinon": "^7.5.0",
+    "@types/uuid": "^3.4.5",
     "@typescript-eslint/eslint-plugin": "^2.3.1",
     "@typescript-eslint/parser": "^2.3.1",
     "eslint": "^6.5.0",
@@ -32,8 +36,6 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "@types/ramda": "^0.26.29",
-    "@types/uuid": "^3.4.5",
     "amqplib": "^0.5.5",
     "highoutput-utilities": "0.0.10",
     "ramda": "^0.26.1",
