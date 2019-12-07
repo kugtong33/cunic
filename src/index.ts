@@ -2,7 +2,7 @@ import amqplib, { Connection, Channel } from 'amqplib';
 import PubSub from './pubsub';
 import RPC from './rpc';
 
-export default class {
+export default class Cunic {
   private hostname: string;
   private connection?: Connection;
   private channel?: Channel;

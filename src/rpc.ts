@@ -1,7 +1,7 @@
 import { Channel } from 'amqplib';
 import * as uuid from 'uuid';
 
-export default class {
+export default class RPC {
   private channel: Channel;
 
   public constructor(channel: Channel) {

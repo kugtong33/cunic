@@ -1,6 +1,6 @@
 import { Channel } from 'amqplib';
 
-export default class {
+export default class PubSub {
   private channel: Channel;
 
   public constructor(channel: Channel) {

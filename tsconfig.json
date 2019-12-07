@@ -2,6 +2,9 @@
   "compilerOptions": {
     "target": "es2017",
     "module": "commonjs",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
     "outDir": "./build",
     "strict": true,
     "strictNullChecks": true,
@@ -15,7 +18,6 @@
     "noUnusedParameters": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "declaration": true,
     "lib": ["es7", "esnext.asynciterable"]
   },
   "include": ["src/**/*.ts"]
